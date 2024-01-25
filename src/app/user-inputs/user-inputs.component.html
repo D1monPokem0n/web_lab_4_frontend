@@ -1,0 +1,130 @@
+<h3>Enter parametrs:</h3>
+<div id="user-input">
+  <h3 class="input-name">
+    X value
+    <div
+      class="error-message send-info-message"
+      *ngIf="!input_x.value"
+      [style.opacity]="sendButtonIsHover ? 1 : 0"
+    >
+      X is required
+    </div>
+  </h3>
+  <mat-button-toggle-group
+    [(ngModel)]="x"
+    #input_x="matButtonToggleGroup"
+    class="x-input toggle-button-bar"
+  >
+    <mat-button-toggle class="toggle-button" value="-3">-3</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="-2">-2</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="-1">-1</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="0">0</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="1">1</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="2">2</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="3">3</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="4">4</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="5">5</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <h3 class="input-name">
+    Y value
+    <div
+      class="error-message send-info-message"
+      *ngIf="!input_y.value"
+      [style.opacity]="sendButtonIsHover ? 1 : 0"
+    >
+      Y is required
+    </div>
+    <div
+      class="error-message send-info-message"
+      *ngIf="input_y.value && !checkIfStringIsNum(input_y.value)"
+      [style.opacity]="sendButtonIsHover ? 1 : 0"
+    >
+      Y must be a number
+    </div>
+    <div
+      class="error-message send-info-message"
+      *ngIf="
+        input_y.value &&
+        checkIfStringIsNum(input_y.value) &&
+        !checkRangeY(input_y.value)
+      "
+      [style.opacity]="sendButtonIsHover ? 1 : 0"
+    >
+      Y must be in range (-3 ... 3)
+    </div>
+  </h3>
+  <input
+    type="text"
+    id="y-value"
+    [(ngModel)]="y"
+    placeholder="Enter a number from -3 to 3..."
+    maxlength="7"
+    class="text-input"
+    #input_y
+    required
+  />
+
+  <h3 class="input-name">
+    R value
+    <div
+      class="error-message send-info-message"
+      *ngIf="!input_r.value"
+      [style.opacity]="sendButtonIsHover ? 1 : 0"
+    >
+      R is required
+    </div>
+    <div
+      class="error-message send-info-message"
+      *ngIf="input_r.value && !checkRangeR(input_r.value)"
+      [style.opacity]="sendButtonIsHover ? 1 : 0"
+    >
+      R must be more then zero
+    </div>
+  </h3>
+  <mat-button-toggle-group
+    (change)="updateUserInput()"
+    [(ngModel)]="r"
+    #input_r="matButtonToggleGroup"
+    class="r-input toggle-button-bar"
+  >
+    <mat-button-toggle class="toggle-button" value="-3">-3</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="-2">-2</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="-1">-1</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="0">0</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="1">1</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="2">2</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="3">3</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="4">4</mat-button-toggle>
+    <mat-button-toggle class="toggle-button" value="5">5</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <div class="buttons-container">
+    <div
+      (mouseover)="sendButtonIsHover = true"
+      (mouseleave)="sendButtonIsHover = false"
+    >
+      <button
+        id="send"
+        mat-button
+        class="send send-button"
+        color="inherit"
+        [disabled]="checkInputs(input_x.value, input_y.value, input_r.value)"
+        (click)="
+          sendRequest(input_x.value, parseNum(input_y.value), input_r.value)
+        "
+      >
+        Send
+      </button>
+    </div>
+    <button
+      id="clear"
+      class="clear clear-button"
+      mat-button
+      color="inherit"
+      (click)="clearRequest()"
+    >
+      Clear
+    </button>
+  </div>
+</div>

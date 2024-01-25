@@ -1,0 +1,31 @@
+<div class="results-container">
+  <table class="results" id="result">
+    <tr class="results-tr">
+      <td>X</td>
+      <td>Y</td>
+      <td>R</td>
+      <td>Hit?</td>
+      <td>Current time</td>
+      <td>Processing time, ns</td>
+    </tr>
+
+    <tr *ngFor="let point of points">
+      <td>{{ point.x }}</td>
+      <td>{{ point.y }}</td>
+      <td>{{ point.r }}</td>
+      <td>{{ point.shotResult }}</td>
+      <td>{{ point.time | date : "hh:mm:ss" }}</td>
+      <td>{{ point.executionTime }}</td>
+    </tr>
+    <!-- <% for(ru.ifmo.se.PointBean point: points.getPoints()) { %>
+             <tr>
+                <td><%= point.getX() %></td>
+                <td><%= point.getY() %></td>
+                <td><%= point.getR() %></td>
+                <td><%= point.getHit() %></td>
+                <td><%= point.getTime() %></td>
+                <td><%= point.getExecutionTime() %></td>
+             </tr>
+              <% } %>  -->
+  </table>
+</div>

@@ -1,0 +1,72 @@
+svg {
+	stroke: #ebeefd;
+}
+
+.circle {
+	fill: rgb(174, 82, 255);
+	fill-opacity: 0.5;
+	stroke: rgb(174, 82, 255);
+}
+
+.circle-mask {
+	fill: #1c1b20;
+	stroke: none;
+}
+
+.rect {
+	fill: rgb(90, 101, 224);
+	fill-opacity: 0.5;
+	stroke: rgb(90, 101, 224);
+}
+
+.triangle {
+	fill: rgb(63, 175, 255);
+	fill-opacity: 0.6;
+	stroke: rgb(63, 175, 255);
+}
+
+.grafic-axis line {
+	stroke: #ebeefd;
+	fill: #ebeefd;
+	stroke-width: 2px;
+}
+
+.grafic-labels text {
+	fill: #ebeefd;
+}
+
+
+.grafic {
+	width: 500px;
+	height: 500px;
+	/* cursor: none; */
+}
+
+.crosshair-cursor {
+	cursor: url('/assets/images/crosshair.svg') 15 15, auto;
+}
+
+.point {
+	position: absolute;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+}
+
+.hit {
+	background-color: rgb(255, 60, 93);
+}
+
+.miss {
+	background-color: rgb(212 213 235);
+}
+
+#warning {
+	color: rgb(255, 60, 93);
+	position: absolute;
+	right: 90px;
+	top: 90px;
+	font-size: 18px;
+	transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+		box-shadow 0.2s, opacity 0.2s;
+}

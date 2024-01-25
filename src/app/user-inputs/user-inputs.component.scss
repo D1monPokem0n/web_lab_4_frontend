@@ -1,0 +1,165 @@
+.x-input {
+  margin-bottom: 30px;
+}
+.y-input {
+  margin-bottom: 40px;
+}
+.r-input {
+  margin-bottom: 50px;
+}
+
+.toggle-button-bar {
+  background-color: #1c1b20;
+  border-color: #1c1b20;
+}
+
+.mat-button-toggle-group-appearance-standard
+  .mat-button-toggle-appearance-standard
+  + .mat-button-toggle-appearance-standard {
+  border-left: none;
+}
+
+.mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+  color: inherit;
+  background-color: rgb(77, 67, 122);
+}
+
+.toggle-button {
+  border: none;
+  border-color: #1c1b20;
+  width: 60px;
+  background-color: #1c1b20;
+  color: inherit;
+  font: inherit;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s, opacity 0.2s;
+}
+
+.toggle-button:hover,
+.send-button:hover,
+.clear-button:hover {
+  background-color: rgb(62, 55, 92);
+}
+.toggle-button:active,
+.send-button:active,
+.clear-button:active {
+  background-color: rgb(77, 67, 122);
+}
+
+.send-button:disabled,
+.clear-button:disabled {
+  color: #4f5056;
+}
+
+.text-input {
+  width: 90%;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid rgb(62, 55, 92);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  :invalid {
+    color: rgb(255, 60, 93);
+  }
+}
+
+.error-message {
+  color: rgb(255, 60, 93);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s, opacity 0.2s;
+}
+
+.select-input {
+  margin-top: 50px;
+  height: 100px;
+  margin-bottom: 40px;
+  select {
+    width: 175px;
+    height: 25px;
+    background-color: inherit;
+    color: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(62, 55, 92);
+    :focus {
+      height: 90px;
+    }
+    :hover {
+      background-color: rgb(62, 55, 92);
+    }
+  }
+  select option {
+    background-color: #121214;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    :hover {
+      background-color: rgb(62, 55, 92);
+    }
+  }
+}
+
+.submit {
+  height: 50px;
+}
+
+.buttons-container {
+  display: flex;
+  margin: 0;
+  justify-content: flex-end;
+  padding-right: 60px;
+}
+
+.clear-button {
+  // bottom: 50px;
+  border: none;
+  width: 110px;
+  height: 50px;
+  background-color: #1c1b20;
+  color: inherit;
+  box-shadow: none;
+  font: inherit;
+  cursor: pointer;
+  z-index: 50;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s, opacity 0.2s;
+  flex: 0 1 auto;
+}
+
+.send-button {
+  border: none;
+  width: 110px;
+  height: 50px;
+  background-color: #1c1b20;
+  color: inherit;
+  box-shadow: none;
+  font: inherit;
+  cursor: pointer;
+  z-index: 50;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s, opacity 0.2s;
+  flex: 0 1 auto;
+  margin-right: 45px;
+}
+
+.send-info {
+  color: rgb(255, 60, 93);
+  position: relative;
+  left: 250px;
+  font: inherit;
+  padding-top: 10px;
+  transition: opacity 500ms;
+}
+
+.input-name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-info-message {
+  padding-right: 60px;
+  font-weight: 500;
+  transition:  opacity 0.4s;
+}
