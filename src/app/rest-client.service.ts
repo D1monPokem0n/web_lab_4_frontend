@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Point } from './point';
+import { Point, randomPoint } from './point';
 import { ShotResult } from './point';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,57 +13,27 @@ export class RestClientService {
   constructor(private http: HttpClient) {}
 
   getPoints(): Observable<Point[]> {
-    this.http
-      .get<Point[]>(this.pointsUrl + 'all')
-      .pipe(
-        tap((p) => console.log('points fetched')),
-        catchError(this.handleError<Point[]>('getPoints', []))
-      )
-      .subscribe((points) => points.forEach((point) => console.log(point)));
-
-    return of([
-      {
-        id: 1,
-        userName: 'dmitrii',
-        x: 5,
-        y: 1,
-        r: 5,
-        shotResult: ShotResult.Hit,
-        time: new Date().setTime(10000000),
-        executionTime: 1000,
-        mouseX: 1100,
-        mouseY: 300,
-      },
-      {
-        id: 1,
-        userName: 'dmitrii',
-        x: -2.5,
-        y: 1,
-        r: 5,
-        shotResult: ShotResult.Hit,
-        time: new Date().setTime(10000000),
-        executionTime: 1000,
-        mouseX: 940,
-        mouseY: 300,
-      },
-      {
-        id: 1,
-        userName: 'dmitrii',
-        x: 0,
-        y: 5,
-        r: 5,
-        shotResult: ShotResult.Hit,
-        time: new Date().setTime(10000000),
-        executionTime: 1000,
-        mouseX: 1050,
-        mouseY: 170,
-      },
-    ]);
+    return this.http.get<Point[]>(this.pointsUrl + 'all').pipe(
+      tap((p) => console.log('points fetched')),
+      catchError(this.handleError<Point[]>('getPoints', []))
+    );
   }
 
-  addPoint(x: number, y: number, r: number): void {}
+  addPoint(x: number, y: number, r: number): Observable<Point> {
+    return this.http
+      .post<Point>(this.pointsUrl + `shot?X=${x}&Y=${y}&R=${r}`, '')
+      .pipe(
+        tap((p) => console.log('point added', p)),
+        catchError(this.handleError<Point>('addPoints', randomPoint()))
+      );
+  }
 
-  clearPoints(): void {}
+  clearPoints(): Observable<Object> {
+    return this.http.delete(this.pointsUrl + 'clear').pipe(
+      tap((p) => console.log('points cleared')),
+      catchError(this.handleError<Point>('clearPoints', undefined))
+    );
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

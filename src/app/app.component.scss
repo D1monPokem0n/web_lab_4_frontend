@@ -17,6 +17,36 @@
   padding-top: 50px;
   padding-bottom: 50px;
 }
+
 .spacing {
   height: 500px;
+}
+
+@media screen and (min-width: 912px) and (max-width: 1266px) {
+  .right-half {
+    width: 500px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .right-half {
+    width: 100%;
+    padding: 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .left-half {
+    width: 100%;
+    padding: 0;
+    padding-top: 20px;
+  }
 }

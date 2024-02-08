@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Point } from '../point';
 import { RestClientService } from '../rest-client.service';
+import { PointsContainerService } from '../points-container.service';
 
 @Component({
   selector: 'app-results',
@@ -8,15 +9,12 @@ import { RestClientService } from '../rest-client.service';
   styleUrls: ['./results.component.scss'],
 })
 export class ResultsComponent implements OnInit {
-  points: Point[] = [];
-
-  constructor(private client: RestClientService) {}
-
-  ngOnInit(): void {
-    this.getPoints();
+  constructor(private pointsContainer: PointsContainerService) {}
+  get points(): Point[] {
+    return this.pointsContainer.points;
   }
 
-  getPoints() {
-    this.client.getPoints().subscribe((points) => (this.points = points));
+  ngOnInit(): void {
+    this.pointsContainer.getPoints();
   }
 }

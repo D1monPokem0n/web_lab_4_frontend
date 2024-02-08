@@ -5,7 +5,7 @@
       <td>Y</td>
       <td>R</td>
       <td>Hit?</td>
-      <td>Current time</td>
+      <td>Send time</td>
       <td>Processing time, ns</td>
     </tr>
 
@@ -13,19 +13,9 @@
       <td>{{ point.x }}</td>
       <td>{{ point.y }}</td>
       <td>{{ point.r }}</td>
-      <td>{{ point.shotResult }}</td>
-      <td>{{ point.time | date : "hh:mm:ss" }}</td>
+      <td>{{ point.shotResult | titlecase}}</td>
+      <td>{{ point.time}}</td>
       <td>{{ point.executionTime }}</td>
     </tr>
-    <!-- <% for(ru.ifmo.se.PointBean point: points.getPoints()) { %>
-             <tr>
-                <td><%= point.getX() %></td>
-                <td><%= point.getY() %></td>
-                <td><%= point.getR() %></td>
-                <td><%= point.getHit() %></td>
-                <td><%= point.getTime() %></td>
-                <td><%= point.getExecutionTime() %></td>
-             </tr>
-              <% } %>  -->
   </table>
 </div>

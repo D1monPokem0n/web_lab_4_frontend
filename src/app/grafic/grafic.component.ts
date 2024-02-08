@@ -2,13 +2,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UserInputService } from '../user-input.service';
 import { RestClientService } from '../rest-client.service';
 import { Point } from '../point';
+import { PointsContainerService } from '../points-container.service';
 
 @Component({
   selector: 'app-grafic',
   templateUrl: './grafic.component.html',
   styleUrls: ['./grafic.component.scss'],
 })
-export class GraficComponent implements OnInit {
+export class GraficComponent {
   @ViewChild('grafic', { static: true }) grafic!: ElementRef;
   DEFAULT_RADIUS = 5;
   CX = 250; // Grafic center x
@@ -23,23 +24,17 @@ export class GraficComponent implements OnInit {
 
   graficIsHovered = false;
 
-  points: Point[] = [];
-
   constructor(
     private userInput: UserInputService,
-    private client: RestClientService
+    private pointsContainer: PointsContainerService
   ) {}
-
-  ngOnInit(): void {
-    this.getPoints();
-  }
 
   currentR(): number {
     return this.userInput.r;
   }
 
-  getPoints(): void {
-    this.client.getPoints().subscribe((points) => (this.points = points));
+  get points(): Point[] {
+    return this.pointsContainer.points;
   }
 
   getCircleRadius(): string {
@@ -104,10 +99,10 @@ export class GraficComponent implements OnInit {
     const cx = this.graficCX();
     const cy = this.graficCY();
     const x =
-      ((ev.clientX - cx) / this.DEFAULT_RADIUS_SIZE) * this.DEFAULT_RADIUS;
+      +(((ev.clientX - cx) / this.DEFAULT_RADIUS_SIZE) * this.DEFAULT_RADIUS).toFixed(2);
     const y =
-      ((cy - ev.clientY) / this.DEFAULT_RADIUS_SIZE) * this.DEFAULT_RADIUS;
-    console.log(x.toFixed(2), y.toFixed(2));
-    this.client.addPoint(x, y, this.userInput.r);
+      +(((cy - ev.clientY) / this.DEFAULT_RADIUS_SIZE) * this.DEFAULT_RADIUS).toFixed(2);
+    console.log(x, y);
+    this.pointsContainer.addPoint(x, y, this.userInput.r);
   }
 }

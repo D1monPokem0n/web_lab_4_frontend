@@ -1,6 +1,7 @@
 import { Component, ElementRef } from '@angular/core';
 import { UserInputService } from '../user-input.service';
 import { RestClientService } from '../rest-client.service';
+import { PointsContainerService } from '../points-container.service';
 
 @Component({
   selector: 'app-user-inputs',
@@ -14,7 +15,7 @@ export class UserInputsComponent {
   sendButtonIsHover = false;
   constructor(
     private userInput: UserInputService,
-    private client: RestClientService
+    private pointsContainer: PointsContainerService
   ) {}
 
   updateUserInput(): void {
@@ -44,7 +45,7 @@ export class UserInputsComponent {
 
   sendRequest(x: number, y: number, r: number): void {
     console.log(x, y, r);
-    this.client.addPoint(x, y, r);
+    this.pointsContainer.addPoint(x, y, r);
     this.x = 0;
     this.y = '';
     this.r = 0;
@@ -53,6 +54,6 @@ export class UserInputsComponent {
 
   clearRequest() {
     console.log('clear');
-    this.client.clearPoints();
+    this.pointsContainer.clearPoints()
   }
 }

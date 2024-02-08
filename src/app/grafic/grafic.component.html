@@ -96,7 +96,7 @@
         <text x="260" y="73" class="grafic-label" id="ygrafic_r">5</text>
       </g>
     </svg>
-    <div id="table-points">
+    <div id="table-points" *ngIf="points">
       <div *ngFor="let point of this.points">
         <div
           [class]="'point ' + (point.shotResult | lowercase)"
@@ -117,27 +117,3 @@
     </div>
   </div>
 </div>
-<!-- <p:remoteCommand
-            name="graficOnClick"
-            update="grafic results user-input"
-            actionListener="#{areaCheckBean.calculate}"
-        >
-        </p:remoteCommand> -->
-<!-- <script>
-            function handleGraficClick(event) {
-                graficOnClick([
-                    { name: 'mouseX', value: Math.round(event.clientX) },
-                    {
-                        name: 'mouseY',
-                        value: Math.round(event.clientY + $(window).scrollTop()),
-                    },
-                ])
-                    .then((res) => {
-                        console.log(`Succes grafic click. ${res.text}`)
-                    })
-                    .catch((error) => {
-                        console.error('Request failed', error)
-                    })
-            }
-        </script> -->
-<!-- </div> -->

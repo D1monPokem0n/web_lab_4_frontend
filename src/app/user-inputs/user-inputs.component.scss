@@ -161,5 +161,41 @@
 .send-info-message {
   padding-right: 60px;
   font-weight: 500;
-  transition:  opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+@media screen and (min-width: 657px) and (max-width: 1266px) {
+  .toggle-button {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1266px) and (max-width: 1427px) {
+  .toggle-button {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .toggle-button {
+    width: 50px;
+  }
+  .user-input-container {
+    padding-left: 100px;
+  }
+
+  .text-input {
+    width: 9*50px;
+  }
+
+  .buttons-container {
+    justify-content: flex-start;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 724px) {
+  .user-input-container {
+    padding: 0 20px;
+  }
 }
